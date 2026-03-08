@@ -19,7 +19,35 @@
 
 
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen">
+
+     <section id="login-page" class="flex items-center justify-center min-h-screen p-4">
+        <div class="card w-full max-w-md bg-white shadow-2xl p-8 border border-gray-100 text-center">
+            <div class="flex justify-center mb-6">
+                <img src="./assets/github-logo.png" alt="Logo" class="w-20 h-20">
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">GitHub Issues Tracker</h1>
+            <p class="text-gray-500 mb-8 mt-2">Sign in to manage your issues</p>
+
+            <div class="space-y-4 text-left">
+                <div class="form-control">
+                    <label class="label font-semibold">Username</label>
+                    <input type="text" id="username" placeholder="Enter Username" class="input input-bordered w-full" />
+                    <span class="text-xs text-indigo-600 mt-1 font-medium">Default: admin</span>
+                </div>
+                <div class="form-control">
+                    <label class="label font-semibold">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" class="input input-bordered w-full" />
+                    <span class="text-xs text-indigo-600 mt-1 font-medium">Default: admin123</span>
+                </div>
+                 <button id="login-btn" class="btn btn-primary w-full  bg-indigo-600 border-none text-white mt-4">Sign In</button>
+                 <div class="divider">OR</div>
+                 <p class="text-xs text-center font-bold">Username: admin</p>
+                 <p class="text-xs text-center font-bold">Password: admin123</p>
+              
+            </div>
+        </div>
+    </section>
     
 </body>
 </html>
