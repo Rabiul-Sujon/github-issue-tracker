@@ -13,7 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <style>
-        @import 'daisyui';
         * { font-family: "Geist", sans-serif; }
         /* Custom border-top logic for issues */
         .border-open { border-top: 4px solid #22c55e !important; }
@@ -48,11 +47,11 @@
 
     <section id="dashboard" class="hidden">
         <nav class="navbar bg-white shadow-sm px-4 md:px-12 border-b">
-            <div class="flex-1 gap-2">
+            <div class="flex flex-1 gap-2">
                 <img src="./assets/github-logo.png" class="w-8 h-8">
                 <span class="font-bold text-xl hidden md:block">GitHub Issues Tracker</span>
             </div>
-            <div class="flex-none gap-2">
+            <div class="flex-none gap-4">
                 <div class="join">
                     <input id="search-input" class="input input-bordered join-item w-32 md:w-64" placeholder="Search issues..."/>
                     <button id="search-btn" class="btn btn-primary join-item bg-indigo-600 border-none text-white">Search</button>
@@ -71,10 +70,10 @@
 
             <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="p-3 bg-indigo-100 rounded-lg"><i class="fa-solid fa-list-check text-indigo-600 text-xl"></i></div>
+                    <div class="p-3 bg-indigo-100 rounded-full"><img src="./assets/Aperture.png" alt="png-img"></div>
                     <div>
                         <h2 class="text-2xl font-bold"><span id="issue-count">0</span> Issues</h2>
-                        <p class="text-sm text-gray-500">Track and manage your project issues</p>
+                        <p class="text-sm text-gray-500">Track and manage your issues</p>
                     </div>
                 </div>
                 <div class="flex gap-6 text-sm font-bold">

@@ -121,3 +121,59 @@ document.querySelectorAll('.tab').forEach(tab => {
     });
 });
 
+// --- 5. Search Functionality ---
+document.getElementById('search-btn').addEventListener('click', () => {
+    const val = document.getElementById('search-input').value.trim();
+    if (val) {
+        loadIssues(val); //  fetch results without deleting the 'allIssues'  list
+    } else {
+        renderCards(allIssues); // If search is empty, show everything
+    }
+});
+
+// Support "Enter" key for search
+document.getElementById('search-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('search-btn').click();
+    }
+});
+
+// --- 6. Modal Issue ---
+async function showIssueDetail(id) {
+    const modal = document.getElementById('issue_modal');
+    const content = document.getElementById('modal-content');
+    
+    modal.showModal();
+    content.innerHTML = `<div class="flex justify-center p-10"><span class="loading loading-spinner loading-lg text-indigo-600"></span></div>`;
+
+    try {
+        const res = await fetch(`${API_BASE}/issue/${id}`);
+        const result = await res.json();
+        const data = result.data;
+
+        content.innerHTML = `
+            <div class="mb-4">
+                <h2 class="text-2xl font-black text-gray-800">${data.title}</h2>
+            </div>
+            <div class="flex gap-3 mb-6">
+                <span class="badge badge-success text-white font-bold p-3">${data.status}</span>
+                <span class="text-gray-400 font-bold text-xs mt-1 uppercase">#Issue ID: ${data.id}</span>
+            </div>
+            <div class="p-6 bg-gray-50 rounded-xl mb-6 border border-gray-100">
+                <p class="text-gray-700 leading-relaxed font-medium">${data.description}</p>
+            </div>
+            <div class="grid grid-cols-2 gap-8 border-t pt-4">
+                <div>
+                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Assigned To</p>
+                    <p class="font-bold text-gray-800">${data.author}</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-tighter">Priority Level</p>
+                    <p class="font-bold text-red-500 uppercase">${data.priority || 'NORMAL'}</p>
+                </div>
+            </div>
+        `;
+    } catch (err) {
+        content.innerHTML = `<p class="text-red-500 font-bold p-10 text-center">Failed to load issue details.</p>`;
+    }
+}
