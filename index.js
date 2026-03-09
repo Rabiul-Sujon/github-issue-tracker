@@ -103,18 +103,18 @@ function renderCards(issues) {
 // --- 4. Tab filtering logic---
 document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', (e) => {
-        // UI State: Highlight the active button
+        // Highlight the active button
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active', 'bg-indigo-600', 'text-white'));
         e.target.classList.add('tab-active', 'bg-indigo-600', 'text-white');
 
         const filter = e.target.dataset.filter;
 
         if (filter === 'all') {
-            // When clicking 'All', clear search and show the master list
+            //  clicking 'All', clear search and show the master list
             document.getElementById('search-input').value = "";
             renderCards(allIssues); 
         } else {
-            // Filter the saved 'allIssues' list locally
+            // Filter the saved 'allIssues' list
             const filteredData = allIssues.filter(i => i.status?.toLowerCase() === filter);
             renderCards(filteredData);
         }
